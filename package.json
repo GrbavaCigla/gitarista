@@ -1,5 +1,5 @@
 {
-	"name": "sheetnotes-front",
+	"name": "gitarista",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
