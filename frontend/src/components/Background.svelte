@@ -2,12 +2,11 @@
 	import { onMount } from 'svelte';
 	import { getRandomNumber } from '../functions/random';
 
-	// TODO: Add offset
 	export let cuts = 4;
-	export let offset = 0.00002;
+	export let offset = 0.0002;
 
-	let height: number;
-	let width: number;
+	let height = 100;
+	let width = 100;
 
 	// TODO: Remove any add real type
 	let particles: any[] = [];
@@ -27,7 +26,7 @@
 		'&#119103;',
 	];
 
-	// TODO: Make this work on window resize
+	// TODO: ~~Make this work on window resize~~ This is partially done
 	onMount(() => {
 		let xcount: number;
 		let ycount: number;
@@ -57,13 +56,10 @@
 	});
 </script>
 
-<svelte:window bind:innerWidth={width} bind:innerHeight={height} />
-
 <div class="absolute w-screen h-screen overflow-hidden">
 	{#each particles as particle}
-		<!-- TODO: Remove style from here and add it to props -->
 		<p
-			style="left: {particle.pos[0]}px; top: {particle.pos[1]}px; {$$props.style}"
+			style="left: {particle.pos[0]}%; top: {particle.pos[1]}%; {$$props.style}"
 			class="absolute -translate-x-1/2 -translate-y-1/2 {$$props.class}"
 		>
 			{@html particle.char}
