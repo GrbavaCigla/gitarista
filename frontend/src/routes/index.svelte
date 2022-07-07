@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { access_token, refresh_token } from '../stores/auth';
-	import Background from '../components/Background.svelte';
+	import { access_token } from '../stores/auth';
 	import { onMount } from 'svelte';
 
 	let authenticated = false;
@@ -16,6 +15,5 @@
 		}
 	});
 </script>
-
 
 <!-- TODO: Add user page -->

@@ -1,6 +1,8 @@
+<!-- TODO: Split into multiple components -->
 <script lang="ts">
 	import { access_token, refresh_token } from '../stores/auth';
-	import Background from '../components/Background.svelte';
+	import CheckBoxTile from '../components/tiles/CheckBoxTile.svelte';
+	import Entry from '../components/Entry.svelte';
 
 	let email: string;
 	let password: string;
@@ -8,7 +10,7 @@
 	// TODO: Add loading indication
 	// TODO: Handle errors
 	// TODO: Change hardcoded url
-	async function signin() {
+	async function login() {
 		let response = await fetch('http://localhost:8000/api/token/', {
 			method: 'POST',
 			headers: {
@@ -22,68 +24,34 @@
 
 		let json = await response.json();
 
-		console.log(json);
-
 		refresh_token.set(json['refresh']);
 		access_token.set(json['access']);
 	}
 </script>
 
 <!-- TODO: Input validation -->
-<Background class="text-nord5 text-6xl font-bold" />
-<div class="w-screen h-screen bg-nord0">
+<div class="w-screen h-screen ">
 	<div
-		class="space-y-4 max-w-md p-4 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-nord0 sm:bg-nord2 sm:rounded-xl sm:shadow-xl"
+		class="space-y-4 max-w-md p-4 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:rounded-xl sm:shadow-xl"
 	>
 		<div>
-			<h1 class="text-nord6 font-extrabold text-2xl text-center">Sign in to your account</h1>
-			<h2 class="text-nord5  text-md text-center">
-				or <a href="#" class="text-nord8">create one</a> now!
+			<h1 class="font-extrabold text-2xl text-center">Sign in to your account</h1>
+			<h2 class="text-md text-center">
+				or <a href="#" class="">create one</a> now!
 			</h2>
 		</div>
-		<div>
-			<label for="email-address" class="sr-only">Email address</label>
-			<input
-				type="email"
-				placeholder="Email address"
-				class="font-bold w-full rounded-xl border-transparent text-nord1 bg-nord5 focus:outline-none focus:border-nord8 focus:ring-nord8"
-				name=""
-				id="email-address"
-				bind:value={email}
-			/>
-		</div>
+		
+		<Entry name="email" bind:value={email} placeholder="Email address" />
 
-		<!-- TODO: Add reveal password -->
-		<div>
-			<label for="password" class="sr-only">Password</label>
-			<input
-				type="password"
-				placeholder="Password"
-				class="font-bold w-full rounded-xl border-transparent text-nord1 bg-nord5 focus:outline-none focus:border-nord8 focus:ring-nord8"
-				name=""
-				id="password"
-				bind:value={password}
-			/>
-		</div>
+		<Entry name="password" bind:value={password} placeholder="Password" />
 
-		<div class="flex items-center justify-between px-1">
-			<div class="flex items-center">
-				<input
-					id="remember-me"
-					name="remember-me"
-					type="checkbox"
-					class="text-nord8 focus:ring-nord8 bg-nord5 border-transparent rounded"
-				/>
-				<label for="remember-me" class="text-sm ml-2 font-bold text-nord5"> Remember me </label>
-			</div>
-			<a href="#" class="text-sm text-nord5 font-bold">Forgot your password?</a>
-		</div>
+		<CheckBoxTile name="remember-me">
+			<span slot="leading" class="text-sm">Remember me</span>
+			<a href="#" slot="trailing" class="text-sm">Forgot your password?</a>
+		</CheckBoxTile>
 
 		<!-- TODO: Add button animations -->
-		<button
-			class="w-full rounded-xl font-bold text-nord5 shadow-xl py-2 bg-nord10 cursor-pointer"
-			on:click={signin}
-		>
+		<button class="w-full" on:click={login}>
 			Sign in
 		</button>
 	</div>

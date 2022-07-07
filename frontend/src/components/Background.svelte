@@ -23,7 +23,7 @@
 		'&#119074;',
 		'&#119101;',
 		'&#119102;',
-		'&#119103;',
+		'&#119103;'
 	];
 
 	// TODO: ~~Make this work on window resize~~ This is partially done
