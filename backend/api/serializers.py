@@ -3,12 +3,15 @@ from rest_framework.serializers import (
     ModelSerializer,
     PrimaryKeyRelatedField,
     CurrentUserDefault,
+    HyperlinkedIdentityField,
+    ReadOnlyField
 )
 from api.models import Sheet
 
 
 class SheetSerializer(ModelSerializer):
-    publisher = PrimaryKeyRelatedField(read_only=True, default=CurrentUserDefault())
+    publisher = ReadOnlyField(source='publisher.username', default=CurrentUserDefault())
+    sheet = HyperlinkedIdentityField(view_name='sheet-download')
 
     class Meta:
         model = Sheet

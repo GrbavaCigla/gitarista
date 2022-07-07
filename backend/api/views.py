@@ -7,7 +7,7 @@ from api.serializers import SheetSerializer
 from api.permissions import IsPublisherOrReadOnly
 
 
-class SheetDetails(RetrieveUpdateDestroyAPIView):
+class SheetDetail(RetrieveUpdateDestroyAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, IsPublisherOrReadOnly]
     queryset = Sheet.objects.all()
     serializer_class = SheetSerializer
