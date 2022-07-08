@@ -5,7 +5,7 @@
 
 <div class="flex items-center justify-between font-bold">
 	<div class="flex items-center">
-		<input {id} {name} type="checkbox" class="border-transparent rounded" />
+		<input {id} {name} type="checkbox" class="rounded focusable text-primary" />
 		<label for={name} class="ml-2">
 			<slot name="leading" />
 		</label>

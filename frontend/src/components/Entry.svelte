@@ -1,15 +1,16 @@
 <script lang="ts">
-	enum TextType {
-		TEXT = 'text',
-		EMAIL = 'email',
-		PASSWORD = 'password'
-	}
+import { empty } from "svelte/internal";
 
 	export let name: string;
 	export let id = name;
 	export let value: string;
 	export let placeholder: string | null;
-	export let type: TextType = TextType.TEXT;
+	export let type: string = 'text';
+	export let errors: string[] = [];
+
+	$: if (errors == undefined) {
+		errors = [];
+	}
 
 	function typeAction(node: HTMLInputElement) {
 		node.type = type;
@@ -22,9 +23,12 @@
 	<input
 		use:typeAction
 		{placeholder}
-		class="font-bold w-full rounded-xl border-transparent focus:outline-none"
+		class={errors.length == 0 ? "font-bold w-full rounded-xl focusable" : "font-bold w-full rounded-xl focusable outline-error"}
 		{name}
 		{id}
 		bind:value
 	/>
+	{#each errors as error}
+		<label for={name} class="inline-block text-error mt-2">{error}</label>
+	{/each}
 </div>
