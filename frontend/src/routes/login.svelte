@@ -41,9 +41,9 @@
 </script>
 
 <!-- TODO: Input validation -->
-<div class="w-screen h-screen bg-light2 dark:bg-dark0 background-pattern">
+<div class="w-screen h-screen bg-light2 dark:bg-dark0 sm:background-pattern">
 	<div
-		class="space-y-4 max-w-md p-4 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:rounded-xl sm:shadow-xl bg-light0 dark:bg-dark1"
+		class="space-y-4 max-w-md p-4 relative top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 sm:rounded-xl sm:shadow-xl sm:bg-light0 sm:dark:bg-dark1"
 	>
 		<div>
 			<h1 class="font-extrabold text-2xl text-center">Sign in to your account</h1>
