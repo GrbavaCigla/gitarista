@@ -26,13 +26,13 @@
 				password: password
 			})
 		});
-		
+
 		let json = await response.json();
-		
+
 		if (response.ok) {
 			refresh_token.set(json['refresh']);
 			access_token.set(json['access']);
-			
+
 			// TODO: Redirect
 		} else {
 			error = json;
@@ -74,7 +74,7 @@
 		</CheckBoxTile>
 
 		<!-- TODO: Add button animations -->
-		<button class="w-full" on:click={login}> Sign in </button>
+		<button class="w-full" on:click={login}>Sign in</button>
 		{#if error.detail !== null && error.detail !== undefined}
 			<p class="text-error">{error.detail}</p>
 		{/if}

@@ -11,7 +11,7 @@ from api.models import Sheet
 
 class SheetSerializer(ModelSerializer):
     publisher = ReadOnlyField(source='publisher.username', default=CurrentUserDefault())
-    sheet = HyperlinkedIdentityField(view_name='sheet-download')
+    sheet_url = HyperlinkedIdentityField(view_name='sheet-download')
 
     class Meta:
         model = Sheet
