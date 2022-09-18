@@ -21,6 +21,9 @@ module.exports = {
 				light2: nord.nord6, // light: background, dark: text
 
 				error: nord.nord11,
+			},
+			fontFamily: {
+				'logo': ['Pacifico']
 			}
 		}
 	},

@@ -22,6 +22,8 @@
 	import { onMount } from 'svelte';
 
 	onMount(async () => {
+		const themeMedia = window.matchMedia('(prefers-color-scheme: dark)');
+
 		let color: string;
 		if (isDarkTheme()) {
 			color = '#eceff4';
@@ -30,6 +32,9 @@
 		}
 
 		var container = document.getElementsByClassName('osmd').item(0);
+		themeMedia.addEventListener('change', (e) => {
+			changeFill(container, e.matches ? '#eceff4' : '#2e3440');
+		});
 
 		var osmd = new OpenSheetMusicDisplay(container);
 
@@ -38,13 +43,13 @@
 			defaultFontStyle: 1
 		});
 
-		// TODO: Unhardocde this
-		// TODO: Add listener on prefers-color-scheme
 		var sheet_promise = osmd.load(metadata.sheet_url).then(function () {
 			osmd.zoom = 0.8;
 			osmd.render();
 
-			document.getElementById('download-pdf-button')!.onclick = () => {savePDF(metadata.title, osmd)};
+			document.getElementById('download-pdf-button')!.onclick = () => {
+				savePDF(metadata.title, osmd);
+			};
 
 			changeFill(container, color);
 		});
