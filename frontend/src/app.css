@@ -1,4 +1,5 @@
 @import "@fontsource/pacifico";
+@import "@fontsource/cantarell";
 
 @tailwind base;
 @tailwind components;
@@ -23,7 +24,8 @@
     }
 
     html {
-        @apply text-dark0 dark:text-light2
+        @apply text-dark0 dark:text-light2;
+        font-family: "Cantarell";
     }
 }
 

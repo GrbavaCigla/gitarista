@@ -1,6 +1,6 @@
 from django.http import FileResponse, Http404
 from rest_framework.views import APIView
-from rest_framework.generics import RetrieveUpdateDestroyAPIView, CreateAPIView
+from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from api.models import Sheet
 from api.serializers import SheetSerializer
@@ -13,7 +13,7 @@ class SheetDetail(RetrieveUpdateDestroyAPIView):
     serializer_class = SheetSerializer
 
 
-class SheetList(CreateAPIView):
+class SheetList(ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly, IsPublisherOrReadOnly]
     queryset = Sheet.objects.all()
     serializer_class = SheetSerializer

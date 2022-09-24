@@ -1,6 +1,4 @@
 <script lang="ts">
-import { empty } from "svelte/internal";
-
 	export let name: string;
 	export let id = name;
 	export let value: string;
@@ -23,7 +21,7 @@ import { empty } from "svelte/internal";
 	<input
 		use:typeAction
 		{placeholder}
-		class={errors.length == 0 ? "font-bold w-full rounded-xl focusable" : "font-bold w-full rounded-xl focusable outline-error"}
+		class={errors.length == 0 ? "text-dark0 font-bold w-full rounded-xl focusable" : "text-dark0 font-bold w-full rounded-xl focusable outline-error"}
 		{name}
 		{id}
 		bind:value
