@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
+music21 = "*"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 django-cors-headers = "*"

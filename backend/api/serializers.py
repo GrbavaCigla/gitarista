@@ -4,19 +4,19 @@ from rest_framework.serializers import (
     PrimaryKeyRelatedField,
     CurrentUserDefault,
     HyperlinkedIdentityField,
-    ReadOnlyField
+    ReadOnlyField,
 )
 from api.models import Sheet
 
 
 class SheetSerializer(ModelSerializer):
-    publisher = ReadOnlyField(source='publisher.username', default=CurrentUserDefault())
-    sheet_url = HyperlinkedIdentityField(view_name='sheet-download')
+    publisher = ReadOnlyField(source="publisher.username", default=CurrentUserDefault())
+    sheet_url = HyperlinkedIdentityField(view_name="sheet-download")
 
     class Meta:
         model = Sheet
         fields = "__all__"
-        extra_kwargs = {"sheet": {"write_only": True}}
+        extra_kwargs = {"sheet": {"write_only": True}, "thumbnail": {"read_only": True}}
 
 
 class UserSerializer(ModelSerializer):

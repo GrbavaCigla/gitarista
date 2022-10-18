@@ -10,5 +10,6 @@ class Sheet(models.Model):
     # TODO: Add this to storage object
     # TODO: Unhardcode this
     sheet = models.FileField(upload_to='uploads/sheets')
+    thumbnail = models.FileField(upload_to='uploads/thumbnails')
     author = models.CharField(max_length=256)
     publisher = models.ForeignKey(User, related_name='sheets', on_delete=models.CASCADE)
