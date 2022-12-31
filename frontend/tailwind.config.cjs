@@ -3,13 +3,11 @@ const config = {
 	theme: {
 		extend: {
 			fontFamily: {
-				"logo": "Pacifico",
+				logo: 'Pacifico'
 			}
 		}
 	},
-	plugins: [
-		require('daisyui')
-	]
+	plugins: [require('daisyui')]
 };
 
 module.exports = config;
